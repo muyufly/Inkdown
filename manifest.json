@@ -1,0 +1,10 @@
+{
+  "id": "inkdown",
+  "name": "Inkdown",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "Inline handwritten ink blocks for Markdown notes.",
+  "author": "",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}

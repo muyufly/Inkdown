@@ -1,0 +1,147 @@
+﻿.inkdown-block {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary);
+  margin: 0.75rem 0;
+  overflow: hidden;
+}
+
+.inkdown-editor-block {
+  margin: 0;
+}
+
+.inkdown-header {
+  align-items: center;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  display: flex;
+  font-size: 12px;
+  min-height: 32px;
+  padding: 4px 8px;
+  gap: 8px;
+}
+
+.inkdown-title {
+  color: var(--text-normal);
+  flex: 1 1 auto;
+  font-weight: 600;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inkdown-mode-hint {
+  display: none;
+}
+
+.inkdown-stage {
+  background-color: var(--background-primary);
+  background-position: center;
+  background-repeat: repeat;
+  box-sizing: border-box;
+  cursor: crosshair;
+  min-height: 120px;
+  position: relative;
+  touch-action: none;
+}
+
+.inkdown-preview {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.inkdown-empty {
+  align-items: center;
+  color: var(--text-faint);
+  display: flex;
+  font-size: 13px;
+  height: 100%;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.inkdown-canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.inkdown-toolbar {
+  align-items: center;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-start;
+  padding: 6px 8px;
+}
+
+.inkdown-tool-button,
+.inkdown-color-button,
+.inkdown-source-button {
+  align-items: center;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  height: 28px;
+  justify-content: center;
+  min-width: 28px;
+  padding: 0 8px;
+}
+
+.inkdown-tool-button.is-active,
+.inkdown-color-button.is-active {
+  box-shadow: 0 0 0 2px var(--interactive-accent);
+}
+
+.inkdown-color-button {
+  padding: 0;
+  width: 28px;
+}
+
+.inkdown-source-button {
+  margin-left: 6px;
+}
+
+.inkdown-height-control {
+  align-items: center;
+  color: var(--text-muted);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 13px;
+  gap: 4px;
+  line-height: 1;
+  margin-left: 0;
+  white-space: nowrap;
+}
+
+.inkdown-height-input {
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  color: var(--text-normal);
+  font-size: 13px;
+  height: 28px;
+  padding: 0 4px;
+  width: 52px;
+}
+
+.inkdown-hidden-native-edit {
+  display: none !important;
+}
+
+.inkdown-codeblock-host .edit-block-button,
+.inkdown-codeblock-host button[aria-label*="Edit"] {
+  display: none !important;
+}
+
+.markdown-rendered *:has(> .inkdown-codeblock-host) > .edit-block-button,
+.markdown-rendered *:has(> .inkdown-codeblock-host) > button[aria-label*="Edit"] {
+  display: none !important;
+}
