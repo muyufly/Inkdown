@@ -18,12 +18,76 @@ export async function exportInkPng(
   ctx.scale(ratio, ratio);
   ctx.fillStyle = data.background === "black" ? "#101014" : "#ffffff";
   ctx.fillRect(0, 0, width, height);
-  if (backgroundUrl) {
+  if (!drawSystemBackground(ctx, data.background, width, height) && backgroundUrl) {
     await drawBackground(ctx, backgroundUrl, width, height);
   }
   renderStrokes(ctx, data.strokes, 1);
   ctx.restore();
   return canvas.toDataURL("image/png");
+}
+
+function drawSystemBackground(ctx: CanvasRenderingContext2D, background: string, width: number, height: number): boolean {
+  const name = background.split("/").pop()?.toLowerCase();
+  if (name === "black.svg" || background === "black") {
+    ctx.fillStyle = "#101014";
+    ctx.fillRect(0, 0, width, height);
+    return true;
+  }
+  if (name === "grid.svg") {
+    drawGrid(ctx, width, height, 32, "#d8d8d8");
+    return true;
+  }
+  if (name === "axis.svg") {
+    drawGrid(ctx, width, height, 64, "#ececec");
+    drawAxisGrid(ctx, width, height, 64, "#cfd7e6");
+    return true;
+  }
+  if (name === "line.svg") {
+    ctx.strokeStyle = "#d8e0f0";
+    ctx.lineWidth = 1.5;
+    for (let y = 28; y <= height; y += 32) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+      ctx.stroke();
+    }
+    return true;
+  }
+  return false;
+}
+
+function drawGrid(ctx: CanvasRenderingContext2D, width: number, height: number, step: number, color: string): void {
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1;
+  for (let x = 0; x <= width; x += step) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+  }
+  for (let y = 0; y <= height; y += step) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
+}
+
+function drawAxisGrid(ctx: CanvasRenderingContext2D, width: number, height: number, step: number, color: string): void {
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  for (let x = step / 2; x <= width; x += step) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+  }
+  for (let y = step / 2; y <= height; y += step) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
 }
 
 function drawBackground(ctx: CanvasRenderingContext2D, backgroundUrl: string, width: number, height: number): Promise<void> {
