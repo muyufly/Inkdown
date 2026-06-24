@@ -1,10 +1,8 @@
 # Inkdown
 
-[简体中文说明](README.zh-CN.md)
+[简体中文](README.zh-CN.md)
 
 Inkdown is an Obsidian plugin for inline handwritten ink blocks inside Markdown notes.
-
-It is intentionally small: it is not a whiteboard, not an Excalidraw clone, and does not include OCR, AI recognition, cloud sync, collaboration, or complex shape tools. The goal is a reliable note-taking loop:
 
 ```text
 /ink shortcut -> Markdown ink block -> handwritten canvas -> .ink.json data -> .png preview -> reopen and edit

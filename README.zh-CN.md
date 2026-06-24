@@ -2,8 +2,6 @@
 
 Inkdown 是一个 Obsidian 插件，用来在 Markdown 笔记中插入可编辑的手写块。
 
-它不是白板应用，也不是 Excalidraw 克隆。当前 MVP 不做 OCR、AI 识别、云同步、协作、复杂图形工具或无限画布。Inkdown 优先保证一个稳定的核心闭环：
-
 ```text
 /ink 快捷输入 -> Markdown ink 块 -> 手写画布 -> 保存 .ink.json -> 导出 .png -> 重新打开继续编辑
 ```
